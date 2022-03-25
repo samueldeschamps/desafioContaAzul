@@ -17,6 +17,24 @@ import java.util.stream.Collectors;
 @RestController
 public class RobotController {
 
+    /*
+    Observações:
+    - Eu já desenvolvi vários servidores SpringBoot com banco de dados e lógicas de negócio,
+    usando as camadas @Service, @Repository, recebendo/enviando TOs em forma de JSON,
+    só que neste projeto eu não fiz porque não havia necessidade, era simples demais pra isso;
+    - Tenho conhecimento que os @Services são a camada correta pra colocar as lógicas de negócio
+    da aplicação, bem como anotar os métodos deles com @Transactional para delimitar o escopo das
+    transações e também para delimitar o escopo do EntityManager com relação a lazy loading, etc.
+    A transação é iniciada no momento em que uma classe chama um método de *outra classe* anotado
+    com @Transactional.
+    - Já implementei servidores multi-tenant separados por Schema, rotinas agendadas usando
+    @Configuration/@EnableScheduling/@Scheduled/@PostConstruct, request interceptors para criar
+    regras que se aplicam a todos os requests e/ou requests filtrados, e também tenho experiência
+    com JPA e Hibernate. Já criei rotinas de migração da BD de uma versão para outra.
+    - Tenho conhecimento de que em aplicações maiores / mais complexas é interessante
+    além de ter os testes em nível externo (web), ter também testes unitários internos.
+     */
+
     @PostMapping("/rest/mars/{command}")
     public @ResponseBody
     String simulatePath(@PathVariable("command") @NonNull String commandStr) {
